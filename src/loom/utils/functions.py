@@ -24,3 +24,11 @@ def get_repo():
             continue
         files.append(str(p))
     return files
+
+
+
+def print_results(results:list):
+    for r in results:
+        chunk = r["result"]
+        print(f"[{r['score']:.3f}] {chunk['name']:<20} {chunk['path']}:{chunk['start_line']}-{chunk['end_line']}")
+

@@ -22,3 +22,11 @@ EXCLUDED_FILES = {
 }
 
 MAX_TOKEN_LIMIT=384
+EVAL_QUESTIONS_PATH= find_project_root()/ "eval_questions.md"
+REPORT_OUTPUT_PATH =find_project_root()/ "eval_report.md"
+BASELINE_PATH = find_project_root() / "baseline.md"
+
+# TODO: confirm current rate at ai.google.dev/pricing before trusting cost numbers
+GEMINI_INPUT_PRICE_PER_1M = 0.75
+GEMINI_OUTPUT_PRICE_PER_1M = 3.75
+

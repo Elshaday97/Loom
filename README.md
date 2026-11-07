@@ -9,7 +9,6 @@ local, $0 cost, no deployment.
 Target repo: [Celery](https://github.com/celery/celery) (~43.5k LOC), cloned locally into
 `data/` — gitignored as a regenerable artifact, not part of this repo's source.
 
-See [REQUIREMENTS.md](REQUIREMENTS.md) for the full spec and phase/task breakdown.
 
 ## Status
 
