@@ -1,0 +1,18 @@
+[project]
+name = "loom"
+version = "0.1.0"
+description = "A codebase agent: ask questions about a repo, get answers grounded in real code locations."
+authors = [
+    {name = "elshaday"}
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "sentence-transformers (>=6.0.1,<7.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "loom", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

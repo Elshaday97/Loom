@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.egg-info/
+
+# env / secrets
+.env
+
+# data — cloned target repo, chunk cache, vector index (regenerable, not source)
+data/
+
+# editor / local tooling
+.claude/settings.local.json
+.DS_Store
+
+# private working notes — not for the public repo
+progress.md
+baseline.md
+eval_questions.md
+REQUIREMENTS.md
+
+
