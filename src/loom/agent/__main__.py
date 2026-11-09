@@ -15,8 +15,8 @@ SYSTEM_INSTRUCTION = (
 
 
 class Agent:
-    def __init__(self):
-        self.vectorizer = Vectorize()
+    def __init__(self, vectorizer: Vectorize = None):
+        self.vectorizer = vectorizer or Vectorize()
         self.client = genai.Client(
             api_key=os.environ["FRONTIER_API_KEY"],
             http_options=types.HttpOptions(
@@ -35,10 +35,6 @@ class Agent:
                 timeout=120 * 1000,
             ),
         )
-        self.max_retries = 4
-        self.req_delay = 1000
-        self.exponential_backoff = 2
-        self.max_delay = 60000
 
     def __build_context(self, results: list[dict]) -> str:
         blocks = []

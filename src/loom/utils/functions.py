@@ -3,16 +3,12 @@ from pathlib import Path
 from .constants import EXCLUDED_FILES, picked_folder
 
 
-def get_folder():    
-    try:
-        is_valid = picked_folder.exists() and picked_folder.is_dir()
-        if is_valid:
-            return picked_folder
-        else:
-            raise OSError("Folder not found")
-    except OSError as e:
-         print("Error when getting folder", e)
-
+def get_folder():
+    if not picked_folder.exists():
+        raise FileNotFoundError(f"Folder not found: {picked_folder}")
+    if not picked_folder.is_dir():
+        raise NotADirectoryError(f"Not a directory: {picked_folder}")
+    return picked_folder
 
 
 def get_repo():
@@ -26,9 +22,9 @@ def get_repo():
     return files
 
 
-
-def print_results(results:list):
+def print_results(results: list):
     for r in results:
         chunk = r["result"]
-        print(f"[{r['score']:.3f}] {chunk['name']:<20} {chunk['path']}:{chunk['start_line']}-{chunk['end_line']}")
-
+        print(
+            f"[{r['score']:.3f}] {chunk['name']:<20} {chunk['path']}:{chunk['start_line']}-{chunk['end_line']}"
+        )

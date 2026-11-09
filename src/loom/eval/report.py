@@ -31,7 +31,9 @@ def write_baseline(results: list[dict]):
                 cost = f"{cost:.6f}"
             else:
                 cost = ""
-            notes = (r["answer"] or r["error"] or "").replace("\n", " ").replace("|", "/")
+            notes = (
+                (r["answer"] or r["error"] or "").replace("\n", " ").replace("|", "/")
+            )
             f.write(f"| {q['id']} |  | {latency} | {cost} | {notes} |\n")
 
 
@@ -44,5 +46,7 @@ def write_report(results: list[dict]):
             f.write(f"question: {q['question']}\n\n")
             for r in entry["result"] or []:
                 chunk = r["result"]
-                f.write(f"- [{r['score']:.3f}] {chunk['name']} ({chunk['path']}:{chunk['start_line']}-{chunk['end_line']})\n")
+                f.write(
+                    f"- [{r['score']:.3f}] {chunk['name']} ({chunk['path']}:{chunk['start_line']}-{chunk['end_line']})\n"
+                )
             f.write("\n")

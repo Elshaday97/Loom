@@ -12,14 +12,18 @@ def build():
     chunker.chunk_files()
     vectorizer.embed_chunks()
 
+
 def search(query):
     Vectorize().search_vector(query)
+
 
 def run_eval():
     Evaluator().evaluate_questions()
 
+
 def run_baseline():
     Evaluator().evaluate_questions_llm()
+
 
 def ask(question):
     result = Agent().answer(question)
@@ -37,8 +41,9 @@ COMMANDS = {
     "ask": lambda: ask(sys.argv[2]),
 }
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
+
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:
         print(f"Usage: python -m loom <{'|'.join(COMMANDS)}> [args]")
         sys.exit(1)
