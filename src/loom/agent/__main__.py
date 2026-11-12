@@ -22,7 +22,7 @@ class Agent:
             http_options=types.HttpOptions(
                 retry_options=types.HttpRetryOptions(
                     initial_delay=1.0,
-                    attempts=5,
+                    attempts=2,
                     http_status_codes=[
                         HTTPStatus.REQUEST_TIMEOUT,
                         HTTPStatus.TOO_MANY_REQUESTS,
@@ -47,6 +47,7 @@ class Agent:
         return "\n\n".join(blocks)
 
     def answer(self, question: str, k: int = 5):
+        print(f"Vectorizing & Querying for Question: {question}")
         results = self.vectorizer.search_vector(question, k)
         if not results:
             return {
@@ -63,6 +64,7 @@ class Agent:
 
         start = time.monotonic()
         try:
+            print(f"LLM request for {question} sent.")
             response = self.client.models.generate_content(
                 model="gemini-3.8-flash",
                 contents=contents,

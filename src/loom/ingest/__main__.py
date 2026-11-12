@@ -56,20 +56,6 @@ class Chunker:
                     print(f"Skipping {file_path}: {e}")
                     continue
 
-                print(f"Reading file and processing: {file_path}")
-                self.current_file = file_path
-                source = Path(file_path).read_text(encoding="utf-8")
-                lines = source.splitlines()
-                tree = ast.parse(source=source)
-                nodes = ast.iter_child_nodes(tree)
-
-                for node in nodes:
-                    if node is not None:
-                        self.__fork_node(node=node, lines=lines)
-
-                # Check remaining assignment lines
-                self.__chunk_assignment_buffer()
-
                 print("Finished chunking files")
 
             if self.chunks is not None:
